@@ -1,0 +1,79 @@
+---
+title: "rslackbot"
+author: "Paul Bradshaw"
+date: "24 February 2017"
+output: html_document
+---
+
+From a [ComputerWorld tutorial](http://www.computerworld.com/article/3171766/application-development/how-to-create-your-own-slack-bots-and-web-apis-in-r.html)
+
+## Step 1: Find stock prices with R
+
+> "Install the quantmod package with install.packages("quantmod") and then run quantmod::getQuote("stocksymbol"). For example, quantmod::getQuote("MSFT") returns the latest Microsoft stock price. Results come back as an R data frame:"
+
+```{r}
+install.packages("quantmod")
+#And test by grabbing Microsoft stock price
+quantmod::getQuote("MSFT")
+```
+
+> "I'd suggest turning this into a text response so it's easier for the user to see the most recent price and the change. The first item in the results data frame is the time of the stock price being reported; the second item (the "Last" column) is that most recent available price. Along with returning the price, you’d probably want to add in a bit of error checking so there's a human-readable response in case a price isn't available. Here's a simple R function to do this:"
+
+```{r}
+#Create a function - this will appear in the Environment window, ready to run later
+newGetQuote <- function(thesymbol){
+  myresults <- quantmod::getQuote(thesymbol)
+  if(is.na(myresults[1,1])){
+    mytext <- paste0("A price is not available for ", thesymbol)
+  } else {
+    mytext <- paste0("Price for ", thesymbol, " is $", myresults[1,2], " as of ", myresults[1,1])
+  }
+  
+  return(mytext)
+}
+```
+
+## Step 2: Set up an API in R
+
+> "The R plumber package [can] turn any R function into an API ... This is easy to set up locally. Install the package with install.packages("plumber")
+
+```{r}
+install.packages("plumber")
+```
+
+> "and then add the following code on the line directly above the start of your function: #* @get /stockquote."
+
+```{r}
+ #* @get /stockquote 
+  newGetQuote <- function(thesymbol){
+  myresults <- quantmod::getQuote(thesymbol) 
+  if(is.na(myresults[1,1])){ 
+    mytext <- paste0("A price is not available for ", thesymbol) 
+  } else { 
+   mytext <- paste0("Price for ", thesymbol, " is $", myresults[1,2], " as of ", myresults[1,1])
+  } 
+  return(mytext) 
+  } 
+```
+
+> "The #* is a special plumber comment to turn the function into an API endpoint. @get means it should be an HTTP GET request for reading data. Plumber also supports @post, @put and @delete. The /stockquote after @get specifies what path the API should respond to. Using stockquote means that the API URL format will be http://www.myurl.com/stockquote. The character string after the / could have been stockprice, myquotes or anything else."
+
+> "Save that as an R file. (I called mine stockfunction.R, but you can name it anything.)"
+
+> "A second R file should contain code to launch a plumber server and run the stockfunction.R file (or whatever you called the file with the function you want to API-ize). This second file loads the plumber library, creates a plumber object from the stockfunction.R code with the plumb() function, and sets the port that the server will listen on. That code looks like:""
+
+
+
+```{r}
+install.packages("plumber")
+#On my machine I get 'package ‘plumber’ is not available (for R version 3.1.2)' so in the end the only approach that works is to install the development version in these lines commented out:
+#library(devtools)
+#install_github("trestletech/plumber")
+library(plumber)
+plumbobject <- plumb("stockfunction.R")
+plumbobject$run(port=8000)
+```
+
+> "If you execute all the code in this second file, which I call myserver.R, and then go to the URL http://localhost:8000/stockquote?thesymbol=MSFT in a browser, you should see the stock price in your browser."
+
+
