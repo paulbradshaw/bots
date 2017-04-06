@@ -203,3 +203,7 @@ Once you're happy to make it public, switch to the **App Review** view on that a
 ## Making further changes
 
 When you want to make more changes to your bot you can do this on Dexter, remembering to click **Publish** on all topics that have been updated, and then switching to the *Platforms* view and clicking **Deploy** to deploy those changes to the version on Facebook itself.
+
+## Broadcasts
+
+You can set up your bot to send a 'broadcast' message once per day (but no more often). This is similar to the news alerts you may have seen from news organisations' bots. You can [find more information about how to set up broadcasts on the Dexter documentation](http://docs.rundexter.com/broadcasts/tutorial/).
