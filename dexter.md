@@ -158,7 +158,7 @@ When it is included, it will look like this:
 
 Make sure that your initial greeting works in this context, or break it up so that it does.
 
-## Using information that has been entered
+### Using information that has been entered
 
 You can also use the asterisk - or *star* to pull information that has been entered, like so:
 
@@ -177,3 +177,17 @@ If you have more than one star, you can specify it by number like so:
 ```
 
 (try typing 'my first name is paul')
+
+### Explore the documentation for other options
+
+There's a lot more you can do - [explore the documentation](http://docs.rundexter.com/quick-start/) (see the navigation on the left) to see what's possible, and examples that you can adapt for your own purposes.
+
+## Testing on Facebook
+
+Once you've got something you're happy to try out on Facebook, click **Publish** in the top right corner. (*Note: if you have more than one topic in your bot, you will need to publish each one*)
+
+Now click on the **Platforms** menu across the top bar.
+
+![](https://raw.githubusercontent.com/paulbradshaw/bots/master/images/dexter_platforms.png)
+
+Click on **Messenger** on the left to turn it on, then follow the instructions.
