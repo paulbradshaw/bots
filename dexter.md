@@ -190,4 +190,16 @@ Now click on the **Platforms** menu across the top bar.
 
 ![](https://raw.githubusercontent.com/paulbradshaw/bots/master/images/dexter_platforms.png)
 
-Click on **Messenger** on the left to turn it on, then follow the instructions.
+Click on **Messenger** on the left to turn it on, then follow the instructions. At some point you will be invited to get some details from the app settings page (the URL will be something like https://developers.facebook.com/apps/43819489128491/roles/) - but with the number of your page in the middle.) Keep this page open as you'll need it later.
+
+Once you've deployed your app, you should be given a link to the bot in this sentence:
+
+*On Facebook, this is as easy as going to an m.me link that points to your page ID: http://m.me/246458182109398*
+
+At the moment only you will be able to chat with the bot, but you can add other users by going to that app settings page on Facebook I said to keep open. Switch to the **Roles** view and click *Add testers* to begin adding other users that you want to be able to use it.
+
+Once you're happy to make it public, switch to the **App Review** view on that app settings page, and click **Start a submission** to go through an approval process. You can [find out more about this process on Dexter's help pages here](http://docs.rundexter.com/platforms/facebook/)
+
+## Making further changes
+
+When you want to make more changes to your bot you can do this on Dexter, remembering to click **Publish** on all topics that have been updated, and then switching to the *Platforms* view and clicking **Deploy** to deploy those changes to the version on Facebook itself.
