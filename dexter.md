@@ -7,7 +7,7 @@ By the way, you'll [find some useful background on bots in journalism in this ex
 Before you begin, you will need to do the following:
 
 * Register for a free account with Dexter (click on '*Make your first bot*' or '*Sign in*')
-* Create a [Facebook Developer account](https://developers.facebook.com/docs/apps/register#developer-account)
+* Create a [Facebook Developer account](https://developers.facebook.com/apps/)
 * [Create a Facebook Page](https://www.facebook.com/help/104002523024878) to host your bot, if you don't have one already (you can [see all your pages here](https://www.facebook.com/bookmarks/pages)). This could be a [professional profile page for you as a journalist](https://www.facebook.com/James-Ball-146632022068073/), or a journalistic project, or a publication, or a spin-off page devoted to a particular niche (like [Birmingham Eastside Technology](https://www.facebook.com/bhameastsideTech/))
 
 Dexter has a [quick start guide](http://docs.rundexter.com/quick-start/) which walks you through the process of creating a basic bot, along with various other guides to particular aspects of bot creation along the left hand navigation. Those guides will be very useful to refer to as you continue. This tutorial is going to take some aspects of those and apply them to a journalistic context.
