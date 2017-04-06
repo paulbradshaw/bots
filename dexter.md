@@ -153,3 +153,22 @@ When it is included, it will look like this:
 
 Make sure that your initial greeting works in this context, or break it up so that it does.
 
+## Using information that has been entered
+
+You can also use the asterisk - or *star* to pull information that has been entered, like so:
+
+```
++ my name is *
+- It's great to meet you, <star>!
+```
+
+The `<star>` bit in the response, is a placeholder for whatever the person typed after `my name is `
+
+If you have more than one star, you can specify it by number like so:
+
+```
++ my * name is *
+- It's great to meet you, <star2>!
+```
+
+(try typing 'my first name is paul')
