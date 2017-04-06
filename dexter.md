@@ -129,7 +129,12 @@ When you test this you will notice that the image loads first, even though it ap
 
 ### Adding an RSS feed
 
-To add an RSS feed
+To add an RSS feed use the `^getRSSFeed` shortcode, as [detailed in the documentation for Dexter](http://docs.rundexter.com/writing/shortcodes/get-rss-feed/), like so:
+
+```
++ (3|[*] story[*])
+- The 3 most recent stories on Birmingham Eastside are: ^getRSSFeed("http://birminghameastside.com/feed/", 3, "desc")
+```
 
 ### Adding a catch-all response
 
