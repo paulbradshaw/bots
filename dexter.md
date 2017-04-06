@@ -139,3 +139,17 @@ It's a good idea to have a final trigger which catches all other possible things
 + [*]
 - Sorry, I didn't understand that. I'm only a bot with limited understanding. Please try again.
 ```
+
+You can also get this response to trigger another response, such as the initial greeting, by adding it in curly brackets with an @ sign before it, like so:
+
+`{@hello}`
+
+When it is included, it will look like this:
+
+```
++ [*]
+- Sorry, I didn't understand that. I'm only a bot with limited understanding. Please try again.{@hello}
+```
+
+Make sure that your initial greeting works in this context, or break it up so that it does.
+
