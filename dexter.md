@@ -59,12 +59,83 @@ Before adding your own commands, think what your bot is going to do. The best id
 
 ## Adding your own commands
 
-The first command is normally triggered by the user typing anything (indicated by the asterisk sign), or a greeting like 'hello/hi/sup'.
+The first command is normally triggered by the user typing anything (indicated by the asterisk sign), or a greeting like 'hello/hi/sup'. Delete the asterisk trigger, then, and replace it with this:
 
 `+ (hi|hello|sup|yo)`
 
-And the first response needs to introduce our bot and what they do, before ideally presenting some options:
+The first response needs to introduce our bot and what they do, before ideally presenting some options. So delete the response that's there at the moment and type:
 
 `- Hello, I am the Birmingham Eastside bot. I'll tell you what's happening in Birmingham. What do you want to know?`
 
 You can add buttons, links or images by clicking on the code/arrow button (`</>`) just above the code area and selecting the appropriate option. Click on there now and select *Insert Buttons*
+
+![](https://raw.githubusercontent.com/paulbradshaw/bots/master/images/dexter_insert_buttons.png)
+
+This will insert this code:
+
+`^buttons(First Choice, Second Choice, Third Choice)`
+
+You can replace 'First Choice' with whatever you want to be the first choice, and so on. These buttons will be represented in Messenger as numbered options, prefixed by `[1]`, and so on. Let's go with some easy options:
+
+`^buttons(What is Birmingham Eastside?, Where is Eastside?, What's the latest story?)`
+
+Now you can test this in the simulator by typing one of the prompts like 'hi', and seeing how it responds.
+
+Now to add our answers. Because the options are numbered, we should anticipate that some people will simply type the number as their response. We can also add some asterisks to anticipate partial responses like so:
+
+```
++ (1|[*] what[*]|[*] birmingham eastside[*])
+- Birmingham Eastside is a news site for people working in Birmingham city centre’s Eastside district, near Millennium Point. In addition to the city centre, we cover stories in other areas of Birmingham, such as Moseley, Kings Heath, Edgbaston, Selly Oak, Perry Barr, Solihull and Sutton Coldfield.
+```
+
+Note that we're using **only lower case letters** in the trigger. If you use any capitals, it will generate an error. 
+
+### Adding links and images
+
+
+### Adding a catch-all response
+
+It's useful to have a response when the bot doesn't understand what has been said. This should always be the last trigger in your list, and should look like this:
+
+```
++ [*]
+- Sorry, I didn't understand that. I'm only a bot with limited understanding. Please try again.
+```
+
+Now for the second response. For this we're going to use [some text from Wikipedia](https://en.wikipedia.org/wiki/Eastside,_Birmingham) - and add an image and a link:
+
+```
++ (2|[*] where[*])
+- Eastside is an area centred on Birmingham City University's Parkside campus and the new HS2 development around Curzon Street station, but it also takes in the Aston University campus and fire station to the north, Digbeth, Fazeley Street and South Birmingham College to the south, and the Bullring to the West.
+```
+
+To add an image after this text use the same insert button you used to select 'Insert Button', but this time select 'Insert Image'. This code will appear:
+
+`^image("url")`
+
+Replace "url" with an actual image URL. I'm going to take the image from that Wikipedia entry, like so:
+
+`^image("https://upload.wikimedia.org/wikipedia/commons/b/be/BirminghamEastsideMap.png")`
+
+Repeat the process for a link:
+
+`^link("<url>","<title>")`
+
+And change it to the correct URL and title:
+
+`^link("https://en.wikipedia.org/wiki/Eastside,_Birmingham","Wikipedia")`
+
+When you test this you will notice that the image loads first, even though it appears after the text in your code. And the link title appears in square brackets, which isn't great, but there you go.
+
+### Adding an RSS feed
+
+To add an RSS feed
+
+### Adding a catch-all response
+
+It's a good idea to have a final trigger which catches all other possible things the user might type, and serves up a response that explains that it has not understood. Note that this should always be positioned last so it only runs *if* none of the other triggers have been triggered.
+
+```
++ [*]
+- Sorry, I didn't understand that. I'm only a bot with limited understanding. Please try again.
+```
