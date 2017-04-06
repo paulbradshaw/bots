@@ -207,3 +207,7 @@ When you want to make more changes to your bot you can do this on Dexter, rememb
 ## Broadcasts
 
 You can set up your bot to send a 'broadcast' message once per day (but no more often). This is similar to the news alerts you may have seen from news organisations' bots. You can [find more information about how to set up broadcasts on the Dexter documentation](http://docs.rundexter.com/broadcasts/tutorial/).
+
+## Using APIs
+
+One of the most powerful ways you can use a bot is to connect it with an API that can deliver responses based on information supplied by the user. [Dexter's documentation outlines some examples here](http://docs.rundexter.com/writing/advanced/http-requests/)
