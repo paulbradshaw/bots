@@ -73,4 +73,43 @@ If you copy that formula down the column, it will give you another few hundred r
 
 Now the tricky bit: in Dexter, we need each trigger to be above the corresponding response - but here they're next to each other.
 
-You're going to need another two columns for this. Call the first one **trigger number** and in the first two cells, type `2`.
+You're going to need another two columns for this. Call the first one **row number** and in the first two cells *under* that column heading, type `2`. We're starting from 2 because your first lines of code are in row 2, not row 1.
+
+Now, this column so far has: 
+
+* In row 1, the heading
+* In row 2, the number 2
+* In row 3, the number 2 again
+
+In row 4, type a formula to add `1` to the value in row 2, like so:
+
+`=G2+1`
+
+(In this example we're in column G, but check what column you are in, and change it to that)
+
+Now copy that formula all the way down. This should generate pairs of numbers representing just over *half* the number of rows in your data (for example, if you have 348 areas, the double numbers should run to 175: half of 348, plus one because you began from 2 and not 1). Keep copying down that column until you hit the same number as you have areas.
+
+Now to move on to why we need these numbers...
+
+![](https://raw.githubusercontent.com/paulbradshaw/bots/master/images/spreadsheetcodeforbots.png)
+
+In the next column we can create the code to grab first the trigger, and then the response. Call this column **For code**.
+
+Underneath that, we're actually going to write two *different* formulae: one in row 2 to grab the trigger; and another in row 3 to grab the response. Here's the formula in row 2:
+
+`=INDIRECT("E"&G2)`
+
+And here's the formula in row 3:
+
+`=INDIRECT("F"&G3)`
+
+Both formulae grab the number from column G in that row. Because we created doubles of those numbers, they're actually the same number.
+
+The first formula puts the letter `"E"` in front of it. This makes `E2` in row 2: the cell containing the trigger code. The second formula puts the letter `"F"` in front of it. This makes `F2` in row 2: the cell containing the response code. (*Again, you may be using different columns for these, in which case adapt your formula accordingly*).
+
+The function `INDIRECT` treats those characters `E2` or `F2` as an actual cell reference, and grabs whatever is in those cells. So you should now have a trigger *above* the response pair.
+
+Select **both** those cells that you've just created and copy down the whole column. Excel will copy them alternately, so you're copying *both* formulae all the way down.
+
+Now you should have your code ready to be copied and pasted into a bot creation tool like Dexter.
+
